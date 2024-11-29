@@ -33,7 +33,9 @@ const ChatMessage: React.FC<{ message: Message }> = ({ message }) => (
 );
 
 // Componente para el avatar del remitente
-const Avatar: React.FC<{ sender: "assistant" | "user" }> = ({ sender }) => (
+const Avatar: React.FC<{
+  sender: "system" | "user" | "assistant" | "function";
+}> = ({ sender }) => (
   <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
     <div className="rounded-full bg-gray-100 dark:bg-gray-700 border p-1">
       {sender === "assistant" ? (
@@ -51,7 +53,7 @@ const Chatbot: React.FC = () => {
 
   const { messages, input, handleInputChange, handleSubmit } = useChat({
     initialMessages: [
-      { role: "assistant", content: "Hola, ¿En qué puedo ayudarte?" },
+      { id: "1", role: "assistant", content: "Hola, ¿En qué puedo ayudarte?" },
     ],
     api: "/api/chat",
   });

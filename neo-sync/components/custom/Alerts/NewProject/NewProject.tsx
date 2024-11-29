@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
 
 import { DataTable } from "@/components/global/data-table";
 import { columns } from "./columnsProject";
-import { getData } from "../../Config/Config";
+import getData from "../../Config/Config";
 
 interface NewProjectProps {
   onSubmit: (projectData: any) => Promise<void>;
@@ -248,7 +248,7 @@ export function NewProject({ onSubmit }: NewProjectProps) {
       ) : (
         <div className="">
           {/* Give the columns to show, the data, and set the amount of rows that will be shown */}
-          <DataTable columns={columns} data={data} rows={5} />
+          {/* <DataTable columns={columns} data={data} rows={5} /> */}
         </div>
       )}
       <div className="my-4">

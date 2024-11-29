@@ -65,9 +65,7 @@ export default function ProjectsComponent({
 
       setFilteredProjects((prevProjects) => [...prevProjects, newProject]);
 
-      
       router.refresh();
-
     } catch (error) {
       console.error("Error creating project:", error);
     }
@@ -113,44 +111,4 @@ export default function ProjectsComponent({
       <KanbanBoard data={filteredProjects} />
     </Container>
   );
-
-  //* Old way of rendering content, without parent container
-  return (
-    <div className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 mx-auto">
-      <Header title="Dashboard">
-        <BlueButton text="Nuevo proyecto" icon={<Plus className="h-4 w-4" />}>
-          <NewProject onSubmit={handleCreateProject} />
-        </BlueButton>
-        <BlueButton
-          text="Agregar usuario"
-          icon={<UserPlus className="h-4 w-4" />}
-        >
-          <AddUser onSubmit={handleAddUser} />
-        </BlueButton>
-        <BlueButton
-          text="Gestionar usuarios"
-          icon={<Users className="h-4 w-4" />}
-        >
-          <UserManagement />
-        </BlueButton>
-        <Button
-          size={"sm"}
-          variant="outline"
-          className="bg-gray-200 text-gray-700 hover:bg-gray-300 border-gray-300 rounded-md shadow-sm"
-        >
-          <SlidersHorizontal className="mr-2 h-4 w-4" />
-          Filtrar proyectos
-          <ChevronDown className="ml-2 h-4 w-4" />
-        </Button>
-      </Header>
-
-      <div className="flex flex-col gap-3 rounded-lg shadow-sm">
-        <CustomSeparator />
-        <SearchBar onSearch={handleSearch} />
-        <KanbanBoard data={filteredProjects} />
-      </div>
-    </div>
-  );
 }
-
-
